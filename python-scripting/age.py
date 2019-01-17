@@ -1,9 +1,9 @@
-#!/bin/python
+#!/usr/bin/env python3.6
 
-name = raw_input("What is your name? ")
-birthday = raw_input("What is your birthday? ")
+name = input("What is your name?")
+birthdate = input("What is your birthdate?")
 
-age = raw_input("How old are you? ")
+age = int(input("How old are you?"))
 
-print("%s was born on %s"  % (name,birthday))
-print("Half of your age is %s" % (age/2))
+print(f"{name} was born on {birthdate}")
+print(f"Half of your age is  {age / 2}")
