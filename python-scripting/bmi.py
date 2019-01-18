@@ -1,30 +1,34 @@
-#!/bin/python
-
+#!/usr/bin/env python3.6
 
 def gather_info():
+    height = float(input("What is your height? (inches or meter) "))
+    weight = float(input("What is your weight? (pounds or kilograms) "))
+    system = input("Are your mesaurements in metric or imperial units?").lower().strip()
+    return (height, weight, system)
 
-    height = float(raw_input("What is your height? (inches or meters) "))
-    weight = float(raw_input("What is your weight? (pound or meters) "))
-    unit = raw_input("Are your measurements in metric or imperial units? ").lower().strip()
-    return (height, weight, unit)
-
-def calculate_bmi(weight, height, unit='metric'):
-
-    if unit.startswith('i'):
+def calculate_bmi(weight, height, system='metric'):
+    """
+    return the Body Mass Index (BMI) for the
+    given weight, height, and measurement system.
+    """
+    if system == 'metric':
         bmi = (weight / (height ** 2))
     else:
-        bmi =  703 * (weight / (height ** 2))
+        bmi = 703 * (weight / (height ** 2))
+    return bmi
 
-    print("Your BMI is %s" % bmi)
 while True:
-    height, weight, unit = gather_info()
-    if unit.startswith('i'):
-        calculate_bmi(height=height, weight=weight, unit="imperial")
+    height, weight, system = gather_info()
+    if system.startswith('i'):
+        bmi = calculate_bmi(weight, system=system, height=height)
+        print(f"Your BMI is {bmi}")
         break
-    elif unit.startswith('m'):
-        calculate_bmi(weight, height)
-        break
+    elif system.startswith('m'):
+        bmi = calculate_bmi(weight, height)
+        print(f"Your BMI is {bmi}")
     else:
         print("Error: Unknown measurement system. Please use imperial or metric.")
-                    
+
+
+
 

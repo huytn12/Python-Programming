@@ -1,16 +1,15 @@
-#!/bin/python
+#!/usr/bin/env python3.6
 
-#import time 
-from time import localtime, strftime, mktime
+from time  import localtime, mktime, strftime
 
 start_time = localtime()
-print("Timer start at %s" % strftime("%X", start_time))
+print(f"Timer started at {strftime('%X', start_time)}")
 
-# Wait for user input
-raw_input("Please press Enter to continue...")
+# Wait for user to stop
+input("Press any key to stop")
 
 stop_time = localtime()
 difference = mktime(stop_time) - mktime(start_time)
 
-print("Timer stopped at %s" % strftime("%X", stop_time))
-print("Total time: %s seconds" % difference)
+print(f"Timer stopped at {strftime('%X', stop_time)}")
+print(f"Total time: {difference} seconds")
